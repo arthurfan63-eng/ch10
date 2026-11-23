@@ -77,8 +77,8 @@ public class Fraction {
         return numerator + "/" + denominator;
     }
 
-    public int toDouble() {
-        return  numerator / denominator;
+    public double toDouble() {
+		return (double) numerator / denominator;
     }
     public int getNum() {
         return numerator;
