@@ -16,9 +16,20 @@ public class Fraction {
         }
     }
     
-    public static Fraction mult(Fraction a, Fraction b){
+    public static Fraction multiply(Fraction a, Fraction b){
     int cn = a.numerator * b.numerator;
      int cd = a.denominator * b.denominator;
+     int  gcf = GCF(cn,cd);
+     System.out.println("Greatest common factor : " + gcf);
+     cn = cn/gcf;
+     cd = cd/gcf;
+		Fraction c = new Fraction(cn,cd);
+		return c;
+    }
+    
+    public static Fraction divide(Fraction a, Fraction b){
+    int cn = a.numerator * b.denominator;
+     int cd = a.denominator * b.numerator;
      int  gcf = GCF(cn,cd);
      System.out.println("Greatest common factor : " + gcf);
      cn = cn/gcf;
@@ -32,6 +43,19 @@ public class Fraction {
 		int cbn = b.numerator * a.denominator;
 		int cd = a.denominator * b.denominator;
 		int cn = can + cbn;
+		int  gcf = GCF(cn,cd);
+		System.out.println("Greatest common factor : " + gcf);
+		cn = cn/gcf;
+		cd = cd/gcf;
+		Fraction c = new Fraction(cn,cd); 
+		return c;
+    }
+    
+            public static Fraction subtract(Fraction a, Fraction b){
+		int can = a.numerator * b.denominator;
+		int cbn = b.numerator * a.denominator;
+		int cd = a.denominator * b.denominator;
+		int cn = can - cbn;
 		int  gcf = GCF(cn,cd);
 		System.out.println("Greatest common factor : " + gcf);
 		cn = cn/gcf;
@@ -64,8 +88,19 @@ public class Fraction {
     }
 
     // mutator method
+    
+    
+    
     public void setNum(int n) {
         numerator = n;
+    }
+    
+    public void reduce(Fraction f) {
+        int n = f.numerator;
+         int d = f.denominator;
+        int gcf = GCF(n,d);
+        f.numerator = f.numerator/gcf;
+        f.denominator = f.denominator/gcf;
     }
     
     public static int GCF(int a, int b) {
